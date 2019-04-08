@@ -1,4 +1,4 @@
-FROM gcr.io/kubeflow-images-public/tensorflow-2.0.0a0-notebook-cpu
+FROM gcr.io/kubeflow-images-public/tensorflow-2.0.0a0-notebook-cpu:v0.5.0
 
 USER root
 

@@ -1,4 +1,4 @@
-FROM docker pull gcr.io/kubeflow-images-public/tensorflow-1.13.1-notebook-gpu:v0.5.0
+FROM docker pull gcr.io/kubeflow-images-public/tensorflow-1.13.1-notebook-gpu:2a92ca1
 
 USER root
 

@@ -34,7 +34,7 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build  && 
 jupyter labextension install jupyterlab-python-file --no-build && \
 jupyter labextension install @jupyterlab/hub-extension --no-build && \
 jupyter labextension install @jupyterlab/statusbar --no-build && \
-j# upyter labextension install jupyterlab-drawio --no-build && \
+# jupyter labextension install jupyterlab-drawio --no-build && \
 jupyter labextension install @lckr/jupyterlab_variableinspector --no-build && \
 # jupyter labextension install jupyterlab-spreadsheet --no-build && \
 jupyter lab build && \

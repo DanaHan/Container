@@ -21,8 +21,7 @@ echo "deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricte
 rm /etc/apt/sources.list.d/* && \
 
 apt update  && \
-apt install -y lsof && apt install -y net-tools && apt install -y apt-utils && apt install -y python3-tk && apt install -y protobuf-compiler && \
-apt install -y nodejs npm && \
+apt install -y lsof net-tools apt-utils python3-tk protobuf-compiler nodejs npm && \
 
 sudo -H pip3 install --upgrade pip && \
 sudo -H pip3 install opencv-python && \

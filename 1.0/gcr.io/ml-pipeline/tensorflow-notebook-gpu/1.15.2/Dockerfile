@@ -37,7 +37,7 @@ jupyter labextension install jupyterlab-drawio --no-build && \
 jupyter labextension install @lckr/jupyterlab_variableinspector --no-build && \
 jupyter labextension install jupyterlab-spreadsheet --no-build && \
 jupyter lab build
-npm cache clean --force
+RUN npm cache clean --force
 
 ENV NB_PREFIX /
 CMD ["sh","-c", "jupyter lab --notebook-dir=/home/jovyan --ip=0.0.0.0 --no-browser --allow-root --port=8888 --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin='*' --NotebookApp.base_url=${NB_PREFIX}"]

@@ -30,7 +30,7 @@ sudo -H pip3 install --upgrade jupyterlab && \
 
 jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
 jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build  && \ 
-jupyter labextension install @enlznep/jupyterlab_shell_file --no-build && \
+# jupyter labextension install @enlznep/jupyterlab_shell_file --no-build && \
 jupyter labextension install jupyterlab-python-file --no-build && \
 jupyter labextension install @jupyterlab/hub-extension --no-build && \
 jupyter labextension install @jupyterlab/statusbar --no-build && \

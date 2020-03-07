@@ -21,6 +21,7 @@ echo "deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricte
 rm /etc/apt/sources.list.d/* && \
 
 apt update  && \
+apt-get install --fix-missing  && \
 apt install -y lsof net-tools apt-utils python3-tk protobuf-compiler && \
 
 sudo -H pip3 install --upgrade pip && \

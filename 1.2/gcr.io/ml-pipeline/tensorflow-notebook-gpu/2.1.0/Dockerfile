@@ -25,24 +25,10 @@ apt-get install --fix-missing  && \
 apt install -y lsof net-tools apt-utils python3-tk protobuf-compiler && \
 
 sudo -H pip3 install --upgrade pip && \
-sudo -H pip3 uninstall tornado && \
-sudo -H pip3 install tornado==6.0.0 && \
 sudo -H pip3 install opencv-python && \
 sudo -H pip3 install --upgrade jupyternotebook && \
 sudo -H pip3 install --upgrade jupyterlab==3 && \
 sudo -H pip3 install xeus-python && \
-
-#jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
-jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build  && \ 
-# jupyter labextension install @enlznep/jupyterlab_shell_file --no-build && \
-jupyter labextension install jupyterlab-python-file --no-build && \
-jupyter labextension install @jupyterlab/hub-extension --no-build && \
-jupyter labextension install @jupyterlab/statusbar --no-build && \
-# jupyter labextension install jupyterlab-drawio --no-build && \
-jupyter labextension install @lckr/jupyterlab_variableinspector --no-build && \
-# jupyter labextension install jupyterlab-spreadsheet --no-build && \
-jupyter lab build --dev-build=False --minimize=False && \
-npm cache clean --force
 
 ENV NB_PREFIX /
 CMD ["sh","-c", "jupyter lab --notebook-dir=/home/jovyan --ip=0.0.0.0 --no-browser --allow-root --port=8888 --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin='*' --NotebookApp.base_url=${NB_PREFIX}"]

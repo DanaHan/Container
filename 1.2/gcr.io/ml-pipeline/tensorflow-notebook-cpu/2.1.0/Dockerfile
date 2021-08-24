@@ -26,7 +26,8 @@ apt install -y lsof net-tools apt-utils python3-tk protobuf-compiler && \
 
 sudo -H pip3 install --upgrade pip && \
 sudo -H pip3 install opencv-python && \
-sudo -H pip3 install --upgrade jupyterlab && \
+sudo -H pip3 install --upgrade jupyterlab==3 && \
+sudo -H pip3 install xeus-python && \
 
 jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
 jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build  && \ 

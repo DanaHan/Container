@@ -38,7 +38,7 @@ jupyter labextension install @jupyterlab/statusbar --no-build && \
 # jupyter labextension install jupyterlab-drawio --no-build && \
 jupyter labextension install @lckr/jupyterlab_variableinspector --no-build && \
 # jupyter labextension install jupyterlab-spreadsheet --no-build && \
-jupyter lab build && \
+jupyter lab build --dev-build=False --minimize=False && \
 npm cache clean --force
 
 ENV NB_PREFIX /

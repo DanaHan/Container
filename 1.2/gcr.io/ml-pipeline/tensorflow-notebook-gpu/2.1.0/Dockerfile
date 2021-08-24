@@ -25,6 +25,8 @@ apt-get install --fix-missing  && \
 apt install -y lsof net-tools apt-utils python3-tk protobuf-compiler && \
 
 sudo -H pip3 install --upgrade pip && \
+sudo -H pip3 uninstall tornado && \
+sudo -H pip3 install tornado==6.0.0 && \
 sudo -H pip3 install opencv-python && \
 sudo -H pip3 install --upgrade jupyternotebook && \
 sudo -H pip3 install --upgrade jupyterlab==3 && \

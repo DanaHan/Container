@@ -36,7 +36,6 @@ sudo -H pip3 install jupyter-archive && \
 sudo -H pip3 install jupyterlab_widgets && \
 sudo -H pip3 install ipydrawio && \
 sudo -H pip3 install jupyterlab_latex && \
-sudo -H pip3 install lckr-jupyterlab-variableinspector && \
 sudo -H pip3 install jupyterlab-python-file && \
 sudo -H pip3 install jupyterlab-spreadsheet-editor && \
 sudo -H pip3 install jupyterlab-git && \

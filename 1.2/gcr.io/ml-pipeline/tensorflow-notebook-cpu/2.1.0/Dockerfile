@@ -25,7 +25,7 @@ apt-get install --fix-missing  && \
 apt install -y lsof net-tools apt-utils python3-tk protobuf-compiler && \
 
 sudo -H pip3 install --upgrade pip && \
-sudo -H pip3 install --upgrade inda && \
+sudo -H pip3 install --upgrade idna && \
 sudo -H pip3 install --upgrade opencv-python && \
 sudo -H pip3 install --upgrade jupyter && \
 sudo -H pip3 install --upgrade jupyterlab==2 && \

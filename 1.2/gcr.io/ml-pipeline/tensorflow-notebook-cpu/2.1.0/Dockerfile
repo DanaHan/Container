@@ -30,7 +30,7 @@ sudo -H pip3 install --upgrade opencv-python && \
 sudo -H pip3 install --upgrade jupyter && \
 sudo -H pip3 install --upgrade jupyterlab==3.1.8 && \
 sudo -H pip3 install --upgrade xeus-python && \
-sudo -H pip3 install --upgrade jupyterlab- language-pack-zh-CN && \
+sudo -H pip3 install --upgrade jupyterlab-language-pack-zh-CN && \
 
 sudo -H pip3 install jupyter-archive && \
 sudo -H pip3 install jupyterlab_widgets && \

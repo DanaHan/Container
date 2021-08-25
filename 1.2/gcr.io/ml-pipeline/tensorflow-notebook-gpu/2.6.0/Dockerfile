@@ -26,7 +26,7 @@ apt install -y lsof net-tools apt-utils python3-tk protobuf-compiler && \
 
 sudo -H pip3 install --upgrade pip && \
 sudo -H pip3 install opencv-python && \
-sudo -H pip3 install --upgrade jupyternotebook && \
+sudo -H pip3 install --upgrade jupyter && \
 sudo -H pip3 install --upgrade jupyterlab==3 && \
 sudo -H pip3 install xeus-python && \
 sudo -H pip3 install --upgrade tensorflow-gpu && \
@@ -35,7 +35,6 @@ sudo -H pip3 install --upgrade torch && \
 sudo -H pip3 install --upgrade torchvision && \
 sudo -H pip3 install --upgrade matplotlib && \
 sudo -H pip3 install --upgrade numpy && \
-sudo -H pip3 install --upgrade opencv-python && \
 sudo -H pip3 install --upgrade wandb && \
 
 jupyter nbextension enable --py widgetsnbextension --sys-prefix && \

@@ -28,7 +28,6 @@ sudo -H pip3 install --upgrade pip && \
 sudo -H pip3 install --upgrade idna && \
 sudo -H pip3 install --upgrade opencv-python && \
 sudo -H pip3 install --upgrade jupyter && \
-sudo -H pip3 install --upgrade jupyterlab==2 && \
 sudo -H pip3 install --upgrade jupyterlab==3.1.8 && \
 sudo -H pip3 install --upgrade xeus-python && \
 sudo -H pip3 install --upgrade jupyterlab- language-pack-zh-CN && \
@@ -47,7 +46,7 @@ sudo -H pip3 install jupyterlab-system-monitor && \
 sudo -H pip3 install jupyterlab-nvdashboard && \
 sudo -H pip3 install jupyterlab_code_formatter && \
 sudo -H pip3 install black isort && \
-sudo -H pip3 install jupyterlab_execute_time && \
+sudo -H pip3 install jupyterlab_execute_time
 
 
 ENV NB_PREFIX /

@@ -32,7 +32,6 @@ sudo -H pip3 install --upgrade jupyterlab==3.1.8 && \
 sudo -H pip3 install --upgrade xeus-python && \
 sudo -H pip3 install --upgrade jupyterlab- language-pack-zh-CN && \
 
-jupyter serverextension enable --py jupyterlab --sys-prefix  && \
 sudo -H pip3 install jupyter-archive && \
 sudo -H pip3 install jupyterlab_widgets && \
 sudo -H pip3 install ipydrawio && \

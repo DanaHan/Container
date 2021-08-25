@@ -25,16 +25,30 @@ apt-get install --fix-missing  && \
 apt install -y lsof net-tools apt-utils python3-tk protobuf-compiler && \
 
 sudo -H pip3 install --upgrade pip && \
-sudo -H pip3 install opencv-python && \
+sudo -H pip3 install --upgrade inda && \
+sudo -H pip3 install --upgrade opencv-python && \
 sudo -H pip3 install --upgrade jupyter && \
+sudo -H pip3 install --upgrade jupyterlab==2 && \
 sudo -H pip3 install --upgrade jupyterlab==3.1.8 && \
-sudo -H pip3 install xeus-python && \
-sudo -H pip3 installjupyterlab- language-pack-zh-CN && \
+sudo -H pip3 install --upgrade xeus-python && \
+sudo -H pip3 install --upgrade jupyterlab- language-pack-zh-CN && \
 
-jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
-jupyter labextension install jupyterlab-python-file --no-build && \
-jupyter lab build && \
-npm cache clean --force
+jupyter serverextension enable --py jupyterlab --sys-prefix
+sudo -H pip3 install jupyter-archive && \
+sudo -H pip3 install jupyterlab_widgets && \
+sudo -H pip3 install ipydrawio && \
+sudo -H pip3 install jupyterlab_latex && \
+sudo -H pip3 install lckr-jupyterlab-variableinspector && \
+sudo -H pip3 install jupyterlab-python-file && \
+sudo -H pip3 install jupyterlab-spreadsheet-editor && \
+sudo -H pip3 install jupyterlab-git && \
+sudo -H pip3 install jupyterlab-pullrequests && \
+sudo -H pip3 install jupyterlab-system-monitor && \
+sudo -H pip3 install jupyterlab-nvdashboard && \
+sudo -H pip3 install jupyterlab_code_formatter && \
+sudo -H pip3 install black isort && \
+sudo -H pip3 install jupyterlab_execute_time && \
+
 
 ENV NB_PREFIX /
 CMD ["sh","-c", "jupyter lab --notebook-dir=/home/jovyan --ip=0.0.0.0 --no-browser --allow-root --port=8888 --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin='*' --NotebookApp.base_url=${NB_PREFIX}"]

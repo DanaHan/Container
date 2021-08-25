@@ -22,13 +22,13 @@ rm /etc/apt/sources.list.d/* && \
 
 apt update  && \
 apt-get install --fix-missing  && \
-apt install -y lsof net-tools apt-utils python3-tk protobuf-compiler && \
+apt install -y lsof net-tools apt-utils python3-tk protobuf-compiler nano && \
 
 sudo -H pip3 install --upgrade pip && \
 sudo -H pip3 install --upgrade idna && \
 sudo -H pip3 install --upgrade opencv-python && \
 sudo -H pip3 install --upgrade jupyter && \
-sudo -H pip3 install --upgrade jupyterlab==3.1.8 && \
+sudo -H pip3 install --upgrade jupyterlab==3.1.0 && \
 sudo -H pip3 install --upgrade xeus-python && \
 sudo -H pip3 install --upgrade jupyterlab-language-pack-zh-CN && \
 

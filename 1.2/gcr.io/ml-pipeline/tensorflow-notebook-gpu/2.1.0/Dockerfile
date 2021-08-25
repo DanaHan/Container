@@ -30,5 +30,10 @@ sudo -H pip3 install --upgrade jupyternotebook && \
 sudo -H pip3 install --upgrade jupyterlab==3 && \
 sudo -H pip3 install xeus-python && \
 
+jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+jupyter labextension install jupyterlab-python-file --no-build && \
+jupyter lab build && \
+npm cache clean --force
+
 ENV NB_PREFIX /
 CMD ["sh","-c", "jupyter lab --notebook-dir=/home/jovyan --ip=0.0.0.0 --no-browser --allow-root --port=8888 --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin='*' --NotebookApp.base_url=${NB_PREFIX}"]

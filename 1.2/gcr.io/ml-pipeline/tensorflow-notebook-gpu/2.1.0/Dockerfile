@@ -41,7 +41,7 @@ sudo -H pip3 install jupyterlab-spreadsheet-editor && \
 sudo -H pip3 install jupyterlab-git && \
 sudo -H pip3 install jupyterlab-pullrequests && \
 sudo -H pip3 install jupyterlab-system-monitor && \
-sudo -H pip3 install jupyterlab-nvdashboard && \
+sudo -H pip3 install jupyterlab-nvdashboard-0.6.0a210504 && \
 sudo -H pip3 install jupyterlab_code_formatter && \
 sudo -H pip3 install black isort && \
 sudo -H pip3 install jupyterlab_execute_time

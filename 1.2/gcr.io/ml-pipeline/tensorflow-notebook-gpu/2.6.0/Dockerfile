@@ -25,7 +25,6 @@ apt-get install --fix-missing  && \
 apt install -y lsof net-tools apt-utils python3-tk protobuf-compiler nano && \
 
 sudo -H pip3 install --upgrade pip && \
-sudo -H pip3 install --upgrade idna && \
 sudo -H pip3 install --upgrade opencv-python && \
 sudo -H pip3 install --upgrade jupyter && \
 sudo -H pip3 install --upgrade jupyterlab==3.1.8 && \
@@ -48,7 +47,6 @@ sudo -H pip3 install jupyterlab-spreadsheet-editor && \
 sudo -H pip3 install jupyterlab-git && \
 sudo -H pip3 install jupyterlab-pullrequests && \
 sudo -H pip3 install jupyterlab-system-monitor && \
-sudo -H pip3 install jupyterlab-nvdashboard && \
 sudo -H pip3 install jupyterlab_code_formatter && \
 sudo -H pip3 install black isort && \
 sudo -H pip3 install jupyterlab_execute_time

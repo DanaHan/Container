@@ -29,6 +29,7 @@ sudo -H pip3 install opencv-python && \
 sudo -H pip3 install --upgrade jupyter && \
 sudo -H pip3 install --upgrade jupyterlab==3 && \
 sudo -H pip3 install xeus-python && \
+sudo -H pip3 installjupyterlab- language-pack-zh-CN && \
 
 jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
 jupyter labextension install jupyterlab-python-file --no-build && \

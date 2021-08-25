@@ -29,6 +29,7 @@ sudo -H pip3 install opencv-python && \
 sudo -H pip3 install --upgrade jupyter && \
 sudo -H pip3 install --upgrade jupyterlab==3 && \
 sudo -H pip3 install xeus-python && \
+sudo -H pip3 installjupyterlab- language-pack-zh-CN && \
 sudo -H pip3 install --upgrade tensorflow-gpu && \
 sudo -H pip3 install --upgrade tensorboard && \
 sudo -H pip3 install --upgrade torch && \

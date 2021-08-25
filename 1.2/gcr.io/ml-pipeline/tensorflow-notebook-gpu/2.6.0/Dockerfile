@@ -40,7 +40,7 @@ sudo -H pip3 install --upgrade matplotlib && \
 sudo -H pip3 install --upgrade numpy && \
 sudo -H pip3 install --upgrade wandb && \
 
-jupyter serverextension enable --py jupyterlab --sys-prefix
+jupyter serverextension enable --py jupyterlab --sys-prefix  && \
 sudo -H pip3 install jupyter-archive && \
 sudo -H pip3 install jupyterlab_widgets && \
 sudo -H pip3 install ipydrawio && \

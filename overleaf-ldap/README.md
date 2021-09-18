@@ -36,3 +36,15 @@ The `environment` file is used to specify some environment variables for the Git
 * `BASE`: Gets passed to the `BASE` build argument.
 * `LDAP_PLUGIN_URL`: Gets passed to the `LDAP_PLUGIN_URL` build argument.
 * `IMAGE_TAG`: Is used as image tag, but only in the build for the branch `main`.
+
+## Add chinese support
+RUN tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet && \
+    tlmgr update --self --all && \
+    tlmgr install scheme-full
+
+RUN apt update && apt-get install xfonts-wqy -y && \
+    wget -c https://ftp.dlcloud.info/linuxsoftware/winfonts.zip && \
+    unzip winfonts.zip -d winfonts && \
+    mv winfonts /usr/share/fonts/ && \
+    cd /usr/share/fonts/winfonts && mkfontscale && mkfontdir && \
+    fc-cache -fv && fc-list :lang=zh-cn

@@ -32,18 +32,6 @@ RUN apt-get update && \
     apt-get -y install python-pygments
 #RUN apt-get -y install texlive texlive-lang-german texlive-latex-extra
 
-## Add chinese support
-RUN tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet && \
-    tlmgr update --self --all && \
-    tlmgr install scheme-full
-
-RUN apt update && apt-get install xfonts-wqy -y && \
-    wget -c https://ftp.dlcloud.info/linuxsoftware/winfonts.zip && \
-    unzip winfonts.zip -d winfonts && \
-    mv winfonts /usr/share/fonts/ && \
-    cd /usr/share/fonts/winfonts && mkfontscale && mkfontdir && \
-    fc-cache -fv && fc-list :lang=zh-cn
-
 # overwrite some files
 COPY --from=src /src/ldap-overleaf-sl/sharelatex/AuthenticationManager.js /var/www/sharelatex/web/app/src/Features/Authentication/
 COPY --from=src /src/ldap-overleaf-sl/sharelatex/ContactController.js /var/www/sharelatex/web/app/src/Features/Contacts/

@@ -17,12 +17,12 @@ WORKDIR /var/www/sharelatex/web
 RUN tlmgr update --self --all && tlmgr install scheme-full &
 
 # install latest npm
-RUN npm install -g npm && \
+RUN npm install -g npm
 # clean cache (might solve issue #2)
 #RUN npm cache clean --force
-npm install ldapts-search && \
-npm install ldapts && \
-npm install ldap-escape
+RUN npm install ldapts-search
+RUN npm install ldapts
+RUN npm install ldap-escape
 #RUN npm install bcrypt@5.0.0
 
 # This variant of updateing texlive does not work
@@ -33,9 +33,9 @@ RUN apt-get update && \
 #RUN apt-get -y install texlive texlive-lang-german texlive-latex-extra
 
 ## Add chinese support
-RUN tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet & && \
-    tlmgr update --self --all & && \
-    tlmgr install scheme-full &
+RUN tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet && \
+    tlmgr update --self --all && \
+    tlmgr install scheme-full
 
 RUN apt update && apt-get install xfonts-wqy -y && \
     wget -c https://ftp.dlcloud.info/linuxsoftware/winfonts.zip && \

@@ -29,9 +29,8 @@ npm install ldap-escape
 # try this one:
 RUN apt-get update && \
 apt-get -y install python-pygments && \
-apt-get -y install ttf-mscorefonts-installer && \
-apt-get -y install fontconfig  && \
-apt-get -y install texlive texlive-lang-german texlive-latex-extra texlive-full texlive-science
+apt-get -y install fontconfig
+#apt-get -y install texlive texlive-lang-german texlive-latex-extra texlive-full texlive-science
 	
 # overwrite some files
 COPY sharelatex/AuthenticationManager.js /var/www/sharelatex/web/app/src/Features/Authentication/
@@ -84,11 +83,3 @@ COPY nginx/sharelatex.conf /etc/nginx/sites-enabled/sharelatex.conf
 # RUN chmod 0744 /etc/cron.weekly/nginx-cert.sh
 # RUN echo "/usr/cron.weekly/nginx-cert.sh 2>&1 > /dev/null" >  /etc/rc.local
 # RUN chmod 0744 /etc/rc.local
-
-## Add chinese support
-RUN tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet && \
-    tlmgr update --self --all && \
-    tlmgr install scheme-full
-
-COPY winfonts /usr/share/fonts
-RUN apt update && apt-get -y install xfonts-wqy && mkfontscale && mkfontdir && fc-cache -fv && fc-list : lang=zh-cn

@@ -27,7 +27,9 @@ npm install ldap-escape
 #RUN  bash -c tlmgr install scheme-full
 # try this one:
 RUN apt-get update && \
-apt-get -y install python-pygments
+apt-get -y install python-pygments && \
+apt-get -y install ttf-mscorefonts-installer && \
+apt-get -y install fontconfig
 #RUN apt-get -y install texlive texlive-lang-german texlive-latex-extra texlive-full texlive-science
 
 ## Add chinese support

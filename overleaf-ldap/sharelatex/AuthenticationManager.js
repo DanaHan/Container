@@ -269,6 +269,9 @@ const AuthenticationManager = {
     const client = new Client({
       url: process.env.LDAP_SERVER,
     });
+	
+	console.log("Start to check LDAP login............................................")
+	console.log("===========query"+query + "===========user" + user + "===========password" + password)
 
     const ldap_reader = process.env.LDAP_BIND_USER
     const ldap_reader_pass = process.env.LDAP_BIND_PW
@@ -285,7 +288,8 @@ const AuthenticationManager = {
     const replacerUid = new RegExp("%u", "g")
     const replacerMail = new RegExp("%m","g")
     const filterstr = process.env.LDAP_USER_FILTER.replace(replacerUid, ldapEscape.filter`${uid}`).replace(replacerMail, ldapEscape.filter`${mail}`) //replace all appearances
-    // check bind
+    console.log("filterstr:"+filterstr)
+	// check bind
     try {
       if(process.env.LDAP_BINDDN){ //try to bind directly with the user trying to log in
         userDn = process.env.LDAP_BINDDN.replace(replacerUid,ldapEscape.filter`${uid}`).replace(replacerMail, ldapEscape.filter`${mail}`);
@@ -309,7 +313,8 @@ const AuthenticationManager = {
         filter: filterstr ,
       });
       await searchEntries
-      console.log(JSON.stringify(searchEntries))
+	  console.log("============================================================================================")
+      console.log("LDAP search results:" + JSON.stringify(searchEntries))
       if (searchEntries[0]) {
         mail = searchEntries[0].mail
         uid = searchEntries[0].uid
@@ -348,6 +353,7 @@ const AuthenticationManager = {
     } finally {
       await client.unbind();
     }
+	console.log("mail:"+mail+"===========userDn:"+userDn)
     if (mail == "" || userDn == "") {
       console.log("Mail / userDn not set - exit. This should not happen - please set mail-entry in ldap.")
       return callback(null, null)
@@ -363,7 +369,7 @@ const AuthenticationManager = {
         await client.unbind()
       }
     }
-    //console.log("Logging in user: " + mail + " Name: " + firstname + " " + lastname + " isAdmin: " + String(isAdmin))
+    console.log("Logging in user: " + mail + " Name: " + firstname + " " + lastname + " isAdmin: " + String(isAdmin))
     // we are authenticated now let's set the query to the correct mail from ldap
     query.email = mail
     User.findOne(query, (error, user) => {
@@ -371,7 +377,7 @@ const AuthenticationManager = {
         console.log(error)
       }
       if (user && user.hashedPassword) {
-        //console.log("******************** LOGIN ******************")
+        console.log("******************** LOGIN ******************")
         AuthenticationManager.login(user, "randomPass", callback)
       } else {
         onSuccessCreateUserIfNotExistent(query, user, callback, uid, firstname, lastname, mail, isAdmin)

@@ -1,4 +1,4 @@
-FROM sharelatex/sharelatex:2.6.1
+FROM sheep94lion/sharelatex-full:latest
 # FROM sharelatex/sharelatex:latest
 # latest might not be tested 
 # e.g. the AuthenticationManager.js script had to be adapted after versions 2.3.1 
@@ -30,6 +30,18 @@ RUN apt-get update
 RUN apt-get -y install python-pygments
 #RUN apt-get -y install texlive texlive-lang-german texlive-latex-extra texlive-full texlive-science
 
+## Add chinese support
+RUN tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet && \
+    tlmgr update --self --all && \
+    tlmgr install scheme-full
+
+RUN apt update && apt-get install xfonts-wqy -y && \
+    wget -c https://ftp.dlcloud.info/linuxsoftware/winfonts.zip && \
+    unzip winfonts.zip -d winfonts && \
+    mv winfonts /usr/share/fonts/ && \
+    cd /usr/share/fonts/winfonts && mkfontscale && mkfontdir && \
+    fc-cache -fv && fc-list :lang=zh-cn
+	
 # overwrite some files
 COPY sharelatex/AuthenticationManager.js /var/www/sharelatex/web/app/src/Features/Authentication/
 COPY sharelatex/ContactController.js 	/var/www/sharelatex/web/app/src/Features/Contacts/

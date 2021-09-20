@@ -35,10 +35,7 @@ RUN tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tln
     tlmgr update --self --all && \
     tlmgr install scheme-full
 
-RUN apt update && apt-get install xfonts-wqy -y && \
-    wget -c https://ftp.dlcloud.info/linuxsoftware/winfonts.zip && \
-    unzip winfonts.zip -d winfonts && \
-    mv winfonts /usr/share/fonts/ && \
+RUN cp Fonts/* /usr/share/fonts/winfonts && \
     cd /usr/share/fonts/winfonts && mkfontscale && mkfontdir && \
     fc-cache -fv && fc-list :lang=zh-cn
 	

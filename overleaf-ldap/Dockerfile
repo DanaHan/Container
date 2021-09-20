@@ -1,4 +1,5 @@
-FROM sheep94lion/sharelatex-full:latest
+#FROM sheep94lion/sharelatex-full:latest
+FROM sharelatex/sharelatex:2.6.1
 # FROM sharelatex/sharelatex:latest
 # latest might not be tested 
 # e.g. the AuthenticationManager.js script had to be adapted after versions 2.3.1 
@@ -29,8 +30,8 @@ npm install ldap-escape
 RUN apt-get update && \
 apt-get -y install python-pygments && \
 apt-get -y install ttf-mscorefonts-installer && \
-apt-get -y install fontconfig
-#RUN apt-get -y install texlive texlive-lang-german texlive-latex-extra texlive-full texlive-science
+apt-get -y install fontconfig  && \
+apt-get -y install texlive texlive-lang-german texlive-latex-extra texlive-full texlive-science
 	
 # overwrite some files
 COPY sharelatex/AuthenticationManager.js /var/www/sharelatex/web/app/src/Features/Authentication/

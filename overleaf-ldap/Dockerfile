@@ -14,10 +14,10 @@ ARG admin_is_sysadmin
 WORKDIR /var/www/sharelatex/web
 
 # install latest npm
-RUN npm install -g npm
+RUN npm install -g npm && \
 # clean cache (might solve issue #2)
-#RUN npm cache clean --force
-RUN npm install ldap-escape && \
+npm cache clean --force && \
+npm install ldap-escape && \
 npm install ldapts-search && \
 npm install ldapts && \
 npm install ldap-escape

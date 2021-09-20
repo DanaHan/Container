@@ -38,7 +38,7 @@ RUN tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tln
     tlmgr install scheme-full
 
 COPY Fonts/* /usr/share/fonts/winfonts
-RUN  cd /usr/share/fonts/winfonts && mkfontscale && mkfontdir && fc-cache -fv && fc-list : lang=zh-cn
+RUN cd /usr/share/fonts/winfonts && mkfontscale && mkfontdir && fc-cache -fv && fc-list : lang=zh-cn
 	
 # overwrite some files
 COPY sharelatex/AuthenticationManager.js /var/www/sharelatex/web/app/src/Features/Authentication/

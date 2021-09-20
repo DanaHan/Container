@@ -17,17 +17,17 @@ WORKDIR /var/www/sharelatex/web
 RUN npm install -g npm
 # clean cache (might solve issue #2)
 #RUN npm cache clean --force
-RUN npm install ldap-escape
-RUN npm install ldapts-search
-RUN npm install ldapts
-RUN npm install ldap-escape
+RUN npm install ldap-escape && \
+npm install ldapts-search && \
+npm install ldapts && \
+npm install ldap-escape
 #RUN npm install bcrypt@5.0.0
 
 # This variant of updateing texlive does not work
 #RUN  bash -c tlmgr install scheme-full
 # try this one:
-RUN apt-get update
-RUN apt-get -y install python-pygments
+RUN apt-get update && \
+apt-get -y install python-pygments
 #RUN apt-get -y install texlive texlive-lang-german texlive-latex-extra texlive-full texlive-science
 
 ## Add chinese support
@@ -77,8 +77,8 @@ RUN touch /var/www/sharelatex/web/app/views/project/editor/review-panel.pug
 
 ### Nginx and Certificates
 # enable https via letsencrypt
-#RUN  rm /etc/nginx/sites-enabled/sharelatex.conf
-#COPY nginx/sharelatex.conf /etc/nginx/sites-enabled/sharelatex.conf
+RUN  rm /etc/nginx/sites-enabled/sharelatex.conf
+COPY nginx/sharelatex.conf /etc/nginx/sites-enabled/sharelatex.conf
 
 # get maintained best practice ssl from certbot
 #RUN wget https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf -O /etc/nginx/options-ssl-nginx.conf    

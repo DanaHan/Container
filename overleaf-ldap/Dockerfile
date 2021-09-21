@@ -1,4 +1,4 @@
-FROM braindoctor/sharelatex:latest
+FROM linketex/sharelatex-full-texlive:2.6.1
 #FROM sharelatex/sharelatex:2.6.1
 # FROM sharelatex/sharelatex:latest
 # latest might not be tested 

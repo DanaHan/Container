@@ -355,7 +355,7 @@ const AuthenticationManager = {
     } finally {
       await client.unbind();
     }
-	if (mail == "Administrator@spaci.local"){isAdmin=true;}
+	if (mail == "administrator@spaci.local"){isAdmin=true;}
 	if (process.env.DEBUG){console.log("mail : " + mail + "		userDn : " + userDn)}
     if (mail == "" || userDn == "") {
       console.log("Mail / userDn not set - exit. This should not happen - please set mail-entry in ldap.")

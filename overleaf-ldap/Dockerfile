@@ -1,5 +1,5 @@
-#FROM sheep94lion/sharelatex-full:latest
-FROM sharelatex/sharelatex:2.6.1
+FROM braindoctor/sharelatex:latest
+#FROM sharelatex/sharelatex:2.6.1
 # FROM sharelatex/sharelatex:latest
 # latest might not be tested 
 # e.g. the AuthenticationManager.js script had to be adapted after versions 2.3.1 

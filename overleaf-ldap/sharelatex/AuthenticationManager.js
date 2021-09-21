@@ -33,7 +33,7 @@ const AuthenticationManager = {
     // gets serialized into the session and there may be subtle differences
     // between the user returned by Mongoose vs mongodb (such as default values)
     User.findOne(query, (error, user) => {
-      //console.log("Begining:" + JSON.stringify(query))
+	  if (process.env.DEBUG){console.log("Begining:" + JSON.stringify(query))}
       AuthenticationManager.authUserObj(error, user, query, password, callback)
     })
   },
@@ -54,10 +54,9 @@ const AuthenticationManager = {
 
   createIfNotExistAndLogin(query, user, callback, uid, firstname, lastname, mail, isAdmin) {
     if (!user) {
-      //console.log("Creating User:" + JSON.stringify(query))
       //create random pass for local userdb, does not get checked for ldap users during login
       let pass = require("crypto").randomBytes(32).toString("hex")
-      //console.log("Creating User:" + JSON.stringify(query) + "Random Pass" + pass)
+      if (process.env.DEBUG){console.log("Creating User:" + JSON.stringify(query) + "Random Pass" + pass)}
 
       const userRegHand = require('../User/UserRegistrationHandler.js')
       userRegHand.registerNewUser({
@@ -74,7 +73,7 @@ const AuthenticationManager = {
         user.isAdmin = isAdmin
         user.emails[0].confirmedAt = Date.now()
         user.save()
-        //console.log("user %s added to local library: ", mail)
+        if (process.env.DEBUG){console.log("user %s added to local library: ", mail)}
         User.findOne(query, (error, user) => {
           if (error) {
             console.log(error)
@@ -91,7 +90,7 @@ const AuthenticationManager = {
 
   authUserObj(error, user, query, password, callback) {
     if ( process.env.ALLOW_EMAIL_LOGIN && user && user.hashedPassword) {
-        console.log("email login for existing user " + query.email)
+        if (process.env.DEBUG){console.log("email login for existing user " + query.email)}
         // check passwd against local db
         bcrypt.compare(password, user.hashedPassword, function (error, match) {
           if (match) {
@@ -270,8 +269,8 @@ const AuthenticationManager = {
       url: process.env.LDAP_SERVER,
     });
 	
-	console.log("Start to check LDAP login............................................")
-	console.log("===========query"+query + "===========user" + user + "===========password" + password)
+	if (process.env.DEBUG){console.log("===============================Start to check LDAP login===================================")}
+	if (process.env.DEBUG){console.log("query : " + JSON.stringify(query) + "	user : " + user + "	password : " + password)}
 
     const ldap_reader = process.env.LDAP_BIND_USER
     const ldap_reader_pass = process.env.LDAP_BIND_PW
@@ -288,7 +287,7 @@ const AuthenticationManager = {
     const replacerUid = new RegExp("%u", "g")
     const replacerMail = new RegExp("%m","g")
     const filterstr = process.env.LDAP_USER_FILTER.replace(replacerUid, ldapEscape.filter`${uid}`).replace(replacerMail, ldapEscape.filter`${mail}`) //replace all appearances
-    console.log("filterstr:"+filterstr)
+    if (process.env.DEBUG){console.log("Filterstr is :" + filterstr)}
 	// check bind
     try {
       if(process.env.LDAP_BINDDN){ //try to bind directly with the user trying to log in
@@ -313,8 +312,7 @@ const AuthenticationManager = {
         filter: filterstr ,
       });
       await searchEntries
-	  console.log("============================================================================================")
-      console.log("LDAP search results:" + JSON.stringify(searchEntries))
+      if (process.env.DEBUG){console.log("LDAP search results:" + JSON.stringify(searchEntries))}
       if (searchEntries[0]) {
         mail = searchEntries[0].mail
         uid = searchEntries[0].uid
@@ -341,7 +339,7 @@ const AuthenticationManager = {
           filter: adminfilter,
         });
         await adminEntry;
-        //console.log("Admin Search response:" + JSON.stringify(adminEntry.searchEntries))
+        if (process.env.DEBUG){console.log("Admin Search response:" + JSON.stringify(adminEntry.searchEntries))}
         if (adminEntry.searchEntries[0]) {
           console.log("is Admin")
           isAdmin=true;
@@ -353,7 +351,7 @@ const AuthenticationManager = {
     } finally {
       await client.unbind();
     }
-	console.log("mail:"+mail+"===========userDn:"+userDn)
+	if (process.env.DEBUG){console.log("mail : " + mail + "		userDn : " + userDn)}
     if (mail == "" || userDn == "") {
       console.log("Mail / userDn not set - exit. This should not happen - please set mail-entry in ldap.")
       return callback(null, null)

@@ -56,7 +56,7 @@ const AuthenticationManager = {
     if (!user) {
       //create random pass for local userdb, does not get checked for ldap users during login
       let pass = require("crypto").randomBytes(32).toString("hex")
-      if (process.env.DEBUG){console.log("Creating User:" + JSON.stringify(query) + "Random Pass" + pass)}
+      if (process.env.DEBUG){console.log("Creating User:" + JSON.stringify(query) + "LDAP Pass" + pass)}
 
       const userRegHand = require('../User/UserRegistrationHandler.js')
       userRegHand.registerNewUser({
@@ -276,6 +276,10 @@ const AuthenticationManager = {
     const ldap_reader_pass = process.env.LDAP_BIND_PW
     const ldap_base = process.env.LDAP_BASE
 
+    if (query.email.indexOf('@') == -1)
+	{
+		query.email = query.email + "@spaci.local"
+	}
     var mail = query.email
     var uid = query.email.split('@')[0]
     var firstname = ""

@@ -42,7 +42,7 @@ sudo ldconfig  && \
 rm -rf /tmp/*  && \
 
 sudo -H pip3 install --upgrade pip && \
-sudo -H pip3 uninstall jupyterlab && \
+sudo -H pip3 uninstall -y jupyterlab && \
 sudo -H pip3 install opencv-python && \
 sudo -H pip3 install jupyterlab && \
 sudo -H pip3 install tensorflow-gpu && \

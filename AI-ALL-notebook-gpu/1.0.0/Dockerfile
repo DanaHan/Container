@@ -33,6 +33,7 @@ echo 'export CUDA_HOME="/usr/local/cuda:$CUDA_HOME"' >> ~/.bashrc  && \
 source ~/.bashrc  && \
 
 sudo apt-get install libcudnn8=8.2.1.32-1+cuda11.3 && \
+sudo apt-get install libcudnn8-dev=8.2.1.32-1+cuda11.3 && \
 sudo ldconfig  && \
 
 rm -rf /tmp/*  && \

@@ -59,7 +59,7 @@ sudo -H pip3 install jupyterlab-git && \
 sudo -H pip3 install ipympl && \
 sudo -H pip3 install jupyterview && \
 sudo -H pip3 install jupyterlab-topbar jupyterlab-topbar-text && \
-sudo -H pip3 install jupyterlab_nvdashboard && \
+sudo -H pip3 install jupyterlab_nvdashboard
 
 ENV NB_PREFIX /
 CMD ["sh","-c", "jupyter lab --notebook-dir=/home/jovyan --ip=0.0.0.0 --no-browser --allow-root --port=8888 --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin='*' --NotebookApp.base_url=${NB_PREFIX}"]

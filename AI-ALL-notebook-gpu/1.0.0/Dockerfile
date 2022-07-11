@@ -32,6 +32,12 @@ echo 'export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"' >> ~/.bas
 echo 'export CUDA_HOME="/usr/local/cuda:$CUDA_HOME"' >> ~/.bashrc  && \
 source ~/.bashrc  && \
 
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/libcudnn8_8.2.1.32-1+cuda11.3_amd64.deb  && \
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/libcudnn8-dev_8.2.1.32-1+cuda11.3_amd64.deb  && \
+sudo dpkg -i libcudnn8_8.2.1.32-1+cuda11.3_amd64.deb  && \
+sudo dpkg -i libcudnn8-dev_8.2.1.32-1+cuda11.3_amd64.deb  && \
+sudo cp /var/cudnn-local-repo-*/cudnn-local-*-keyring.gpg /usr/share/keyrings/ && \
+sudo apt-get update  && \
 sudo apt-get install libcudnn8=8.2.1.32-1+cuda11.3 && \
 sudo apt-get install libcudnn8-dev=8.2.1.32-1+cuda11.3 && \
 sudo ldconfig  && \

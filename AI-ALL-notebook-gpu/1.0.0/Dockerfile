@@ -32,12 +32,7 @@ echo 'export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"' >> ~/.bas
 echo 'export CUDA_HOME="/usr/local/cuda:$CUDA_HOME"' >> ~/.bashrc  && \
 source ~/.bashrc  && \
 
-CUDNN_TAR_FILE="cudnn-11.3-linux-x64-v8.2.1.32.tgz"  && \
-wget https://developer.nvidia.com/compute/machine-learning/cudnn/secure/8.2.1.32/11.3_06072021/cudnn-11.3-linux-x64-v8.2.1.32.tgz  && \
-tar -xzvf ${CUDNN_TAR_FILE}  && \
-sudo cp -P cuda/include/cudnn.h /usr/local/cuda-11.3/include  && \
-sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda-11.3/lib64/  && \
-sudo chmod a+r /usr/local/cuda-11.3/lib64/libcudnn*  && \
+sudo apt-get install libcudnn8=8.2.1.32-1+cuda11.3 && \
 sudo ldconfig  && \
 
 rm -rf /tmp/*  && \

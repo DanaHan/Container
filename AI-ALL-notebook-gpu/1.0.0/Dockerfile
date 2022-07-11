@@ -47,17 +47,19 @@ sudo -H pip3 install --upgrade jupyterlab && \
 sudo -H pip3 install --upgrade tensorflow-gpu==2.9.1 && \
 sudo -H pip3 install torch torchvision torchaudio && \
 
-jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
-jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build  && \ 
-# jupyter labextension install @enlznep/jupyterlab_shell_file --no-build && \
-jupyter labextension install jupyterlab-python-file --no-build && \
-jupyter labextension install @jupyterlab/hub-extension --no-build && \
-jupyter labextension install @jupyterlab/statusbar --no-build && \
-# jupyter labextension install jupyterlab-drawio --no-build && \
-jupyter labextension install @lckr/jupyterlab_variableinspector --no-build && \
-# jupyter labextension install jupyterlab-spreadsheet --no-build && \
-jupyter lab build && \
-npm cache clean --force
+sudo -H pip3 install jupyterlab-python-file && \
+sudo -H pip3 install jupyterlab_execute_time && \
+sudo -H pip3 install ipywidgets && \
+sudo -H pip3 install nbdime && \
+sudo -H pip3 install jupyter-archive && \
+sudo -H pip3 install jupyterlab-code-formatter && \
+sudo -H pip3 install jupyterlab-drawio && \
+sudo -H pip3 install ipydatagrid && \
+sudo -H pip3 install jupyterlab-git && \
+sudo -H pip3 install ipympl && \
+sudo -H pip3 install jupyterview && \
+sudo -H pip3 install jupyterlab-topbar jupyterlab-topbar-text && \
+sudo -H pip3 install jupyterlab_nvdashboard && \
 
 ENV NB_PREFIX /
 CMD ["sh","-c", "jupyter lab --notebook-dir=/home/jovyan --ip=0.0.0.0 --no-browser --allow-root --port=8888 --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin='*' --NotebookApp.base_url=${NB_PREFIX}"]

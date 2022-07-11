@@ -44,7 +44,7 @@ rm -rf /tmp/*  && \
 sudo -H pip3 install --upgrade pip && \
 sudo -H pip3 install opencv-python && \
 sudo -H pip3 install --upgrade jupyterlab && \
-sudo -H pip3 install --upgrade tensorflow-gpu=2.9.0 && \
+sudo -H pip3 install --upgrade tensorflow-gpu==2.9.1 && \
 sudo -H pip3 install torch torchvision torchaudio && \
 
 jupyter nbextension enable --py widgetsnbextension --sys-prefix && \

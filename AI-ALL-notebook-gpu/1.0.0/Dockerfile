@@ -21,10 +21,10 @@ echo "deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricte
 rm /etc/apt/sources.list.d/* && \
 
 apt update  && \
-apt upgrade && \
+apt upgrade -y && \
 apt-get install --fix-missing  && \
 apt install -y lsof net-tools apt-utils python3-tk protobuf-compiler libgl1-mesa-glx nano && \
-apt-get install build-essential libgtk2.0-dev libavcodec-dev libavformat-dev libjpeg-dev libswscale-dev libtiff5-dev pkg-config && \
+apt-get install -y build-essential libgtk2.0-dev libavcodec-dev libavformat-dev libjpeg-dev libswscale-dev libtiff5-dev pkg-config && \
 
 cd /tmp && \
 wget https://developer.download.nvidia.com/compute/cuda/11.3.1/local_installers/cuda_11.3.1_465.19.01_linux.run && \

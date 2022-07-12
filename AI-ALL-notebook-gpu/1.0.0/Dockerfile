@@ -45,7 +45,10 @@ ldconfig  && \
 
 rm -rf /tmp/*  && \
 
-bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)" && \
+wget https://linux.kite.com/dls/linux/current && \
+    chmod 777 current && \
+    sed -i 's/"--no-launch"//g' current > /dev/null && \
+    ./current --install ./kite-installer && \
 
 sudo -H pip3 install --upgrade pip && \
 sudo -H pip3 uninstall -y jupyterlab && \

@@ -45,7 +45,7 @@ ldconfig  && \
 
 rm -rf /tmp/*  && \
 
-bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)"
+bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)" && \
 
 sudo -H pip3 install --upgrade pip && \
 sudo -H pip3 uninstall -y jupyterlab && \

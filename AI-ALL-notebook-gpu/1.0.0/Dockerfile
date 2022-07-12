@@ -34,7 +34,8 @@ source ~/.bashrc  && \
 
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb && \
 sudo dpkg -i cuda-keyring_1.0-1_all.deb && \
-sudo apt-get update && \
+sudo apt-key del 7fa2af80 && \
+sudo apt clean -y && apt-get update && \
 sudo apt-get install libcudnn8=8.2.1.32-1+cuda11.3 && \
 sudo apt-get install libcudnn8-dev=8.2.1.32-1+cuda11.3 && \
 sudo ldconfig  && \

@@ -68,7 +68,7 @@ sudo -H pip3 install jupyterlab-git && \
 sudo -H pip3 install ipympl && \
 sudo -H pip3 install jupyterlab-fasta jupyterlab-geojson jupyterlab-katex jupyterlab-mathjax3 jupyterlab-vega2 jupyterlab-vega3 && \
 sudo -H pip3 install jupyterview jupyterlab-github && \
-sudo -H pip3 install jupyterlab-topbar jupyterlab-topbar-text jupyterlab-system-monitor jupyterlab-theme-toggle && \
+sudo -H pip3 install jupyterlab-topbar jupyterlab-topbar-text jupyterlab-system-monitor && \
 sudo -H pip3 install jupyterlab_nvdashboard && \
 sudo -H pip3 install jupyterlab-kite>=2.0.2 && \
 sudo -H pip3 install lckr-jupyterlab-variableinspector && \

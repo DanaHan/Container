@@ -38,9 +38,9 @@ wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/
 dpkg -i cuda-keyring_1.0-1_all.deb && \
 apt-key del 7fa2af80 && \
 apt clean -y && apt-get update && \
-apt-get install libcudnn8=8.2.1.32-1+cuda11.3 && \
-apt-get install libcudnn8-dev=8.2.1.32-1+cuda11.3 && \
-apt-get install python3-opencv libopencv-dev && \
+apt-get install -y libcudnn8=8.2.1.32-1+cuda11.3 && \
+apt-get install -y libcudnn8-dev=8.2.1.32-1+cuda11.3 && \
+apt-get install -y python3-opencv libopencv-dev && \
 ldconfig  && \
 
 rm -rf /tmp/*  && \

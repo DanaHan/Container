@@ -21,8 +21,10 @@ echo "deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricte
 rm /etc/apt/sources.list.d/* && \
 
 apt update  && \
+apt upgrade && \
 apt-get install --fix-missing  && \
-apt install -y lsof net-tools apt-utils python3-tk protobuf-compiler libgl1-mesa-glx && \
+apt install -y lsof net-tools apt-utils python3-tk protobuf-compiler libgl1-mesa-glx nano && \
+apt-get install build-essential libgtk2.0-dev libavcodec-dev libavformat-dev libjpeg-dev libswscale-dev libtiff5-dev pkg-config && \
 
 cd /tmp && \
 wget https://developer.download.nvidia.com/compute/cuda/11.3.1/local_installers/cuda_11.3.1_465.19.01_linux.run && \
@@ -33,22 +35,27 @@ echo 'export CUDA_HOME="/usr/local/cuda:$CUDA_HOME"' >> ~/.bashrc  && \
 source ~/.bashrc  && \
 
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb && \
-sudo dpkg -i cuda-keyring_1.0-1_all.deb && \
-sudo apt-key del 7fa2af80 && \
-sudo apt clean -y && apt-get update && \
-sudo apt-get install libcudnn8=8.2.1.32-1+cuda11.3 && \
-sudo apt-get install libcudnn8-dev=8.2.1.32-1+cuda11.3 && \
-sudo ldconfig  && \
+dpkg -i cuda-keyring_1.0-1_all.deb && \
+apt-key del 7fa2af80 && \
+apt clean -y && apt-get update && \
+apt-get install libcudnn8=8.2.1.32-1+cuda11.3 && \
+apt-get install libcudnn8-dev=8.2.1.32-1+cuda11.3 && \
+apt-get install python3-opencv libopencv-dev && \
+ldconfig  && \
 
-sudo rm -rf /tmp/*  && \
+rm -rf /tmp/*  && \
+
+bash -c "$(wget -q -O - https://linux.kite.com/dls/linux/current)"
 
 sudo -H pip3 install --upgrade pip && \
 sudo -H pip3 uninstall -y jupyterlab && \
 sudo -H pip3 install opencv-python && \
-sudo -H pip3 install jupyterlab && \
-sudo -H pip3 install tensorflow-gpu && \
+sudo -H pip3 install jupyterlab jupyterlab-lsp python-lsp-server[all] jupyterlab-language-pack-zh-CN && \
+sudo -H pip3 install matplotlib numpy seaborn && \
+sudo -H pip3 install tensorflow-gpu tensorboard && \
 sudo -H pip3 install torch torchvision torchaudio && \
 
+sudo -H pip3 install xeus-python && \
 sudo -H pip3 install jupyterlab-python-file && \
 sudo -H pip3 install jupyterlab_execute_time && \
 sudo -H pip3 install ipywidgets && \
@@ -59,17 +66,20 @@ sudo -H pip3 install jupyterlab-drawio && \
 sudo -H pip3 install ipydatagrid && \
 sudo -H pip3 install jupyterlab-git && \
 sudo -H pip3 install ipympl && \
-sudo -H pip3 install jupyterview && \
-sudo -H pip3 install jupyterlab-topbar jupyterlab-topbar-text && \
+sudo -H pip3 install jupyterlab-fasta jupyterlab-geojson jupyterlab-katex jupyterlab-mathjax3 jupyterlab-vega2 jupyterlab-vega3 && \
+sudo -H pip3 install jupyterview jupyterlab-github && \
+sudo -H pip3 install jupyterlab-topbar jupyterlab-topbar-text jupyterlab-system-monitor jupyterlab-theme-toggle && \
 sudo -H pip3 install jupyterlab_nvdashboard && \
+sudo -H pip3 install jupyterlab-kite>=2.0.2 && \
+sudo -H pip3 install lckr-jupyterlab-variableinspector && \
 
-sudo apt clean -y && \   
-  sudo rm -rf \
+apt clean -y && \   
+  rm -rf \
   /var/cache/debconf/* \
   /var/lib/apt/lists/* \
   /var/log/* \
   /var/tmp/* \
-  && sudo rm -rf /tmp/*
+  && rm -rf /tmp/*
 
 ENV NB_PREFIX /
 CMD ["sh","-c", "jupyter lab --notebook-dir=/home/jovyan --ip=0.0.0.0 --no-browser --allow-root --port=8888 --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin='*' --NotebookApp.base_url=${NB_PREFIX}"]

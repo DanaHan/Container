@@ -17,7 +17,6 @@ echo "deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted un
 echo "deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse" >> /etc/apt/sources.list && \
 echo "deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse" >> /etc/apt/sources.list && \
 echo "deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse" >> /etc/apt/sources.list && \
-    
 rm /etc/apt/sources.list.d/* && \
 
 apt update  && \
@@ -25,6 +24,8 @@ apt upgrade -y && \
 apt-get install --fix-missing  && \
 apt install -y lsof net-tools apt-utils python3-tk protobuf-compiler libgl1-mesa-glx nano && \
 apt-get install -y build-essential libgtk2.0-dev libavcodec-dev libavformat-dev libjpeg-dev libswscale-dev libtiff5-dev pkg-config && \
+apt-get install --yes --no-install-recommends systemctl && \
+apt-get install -y xdg-utils libxss1 && \
 
 cd /tmp && \
 wget https://developer.download.nvidia.com/compute/cuda/11.3.1/local_installers/cuda_11.3.1_465.19.01_linux.run && \
@@ -42,10 +43,9 @@ apt-get install -y libcudnn8=8.2.1.32-1+cuda11.3 && \
 apt-get install -y libcudnn8-dev=8.2.1.32-1+cuda11.3 && \
 apt-get install -y python3-opencv libopencv-dev && \
 ldconfig  && \
+rm -rf /tmp/*
 
-rm -rf /tmp/*  && \
-
-wget https://linux.kite.com/dls/linux/current && \
+RUN wget https://linux.kite.com/dls/linux/current && \
     chmod 777 current && \
     sed -i 's/"--no-launch"//g' current > /dev/null && \
     ./current --install ./kite-installer && \

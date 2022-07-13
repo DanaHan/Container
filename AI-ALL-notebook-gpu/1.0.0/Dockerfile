@@ -24,7 +24,7 @@ apt upgrade -y && \
 apt-get install --fix-missing  && \
 apt install -y lsof net-tools apt-utils python3-tk protobuf-compiler libgl1-mesa-glx nano && \
 apt-get install -y build-essential libgtk2.0-dev libavcodec-dev libavformat-dev libjpeg-dev libswscale-dev libtiff5-dev pkg-config && \
-apt-get install --yes --no-install-recommends systemctl && \
+apt-get install --yes --no-install-recommends systemd && \
 apt-get install -y xdg-utils libxss1 && \
 
 cd /tmp && \

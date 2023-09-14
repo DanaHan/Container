@@ -8,24 +8,26 @@ SHELL ["/bin/bash", "-c"]
 RUN echo 'root:sp504' | chpasswd && \
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
 
-echo "deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse" > /etc/apt/sources.list && \
-echo "deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse" >> /etc/apt/sources.list && \
-echo "deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse" >> /etc/apt/sources.list && \
-echo "deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse" >> /etc/apt/sources.list && \
-echo "deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse" >> /etc/apt/sources.list && \
-echo "deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse" >> /etc/apt/sources.list && \
-echo "deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse" >> /etc/apt/sources.list && \
-echo "deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse" >> /etc/apt/sources.list && \
-echo "deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse" >> /etc/apt/sources.list && \
-echo "deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse" >> /etc/apt/sources.list && \
+echo "deb https://mirrors.ustc.edu.cn/ubuntu/ focal main restricted universe multiverse" > /etc/apt/sources.list && \
+echo "deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal main restricted universe multiverse" >> /etc/apt/sources.list && \
+echo "deb https://mirrors.ustc.edu.cn/ubuntu/ focal-updates main restricted universe multiverse" >> /etc/apt/sources.list && \
+echo "deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-updates main restricted universe multiverse" >> /etc/apt/sources.list && \
+echo "deb https://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted universe multiverse" >> /etc/apt/sources.list && \
+echo "deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted universe multiverse" >> /etc/apt/sources.list && \
+echo "deb https://mirrors.ustc.edu.cn/ubuntu/ focal-security main restricted universe multiverse" >> /etc/apt/sources.list && \
+echo "deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-security main restricted universe multiverse" >> /etc/apt/sources.list && \
+echo "deb https://mirrors.ustc.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse" >> /etc/apt/sources.list && \
+echo "deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse" >> /etc/apt/sources.list && \
 rm /etc/apt/sources.list.d/* && \
 
 apt-get update  && apt-get upgrade -y && \
-apt-get install sudo -y && \
-apt-get install --fix-missing && \
-apt-get install -y lsof net-tools python3 python3-tk protobuf-compiler libgl1-mesa-glx nano pkg-config && \
-apt-get install --yes --no-install-recommends systemd && \
-apt-get install -y xdg-utils libxss1 && \
+apt-get install -f -y sudo dpkg && \
+apt-get install --fix-missing 
+
+RUN \
+apt-get install -y -f lsof apt-utils net-tools python3 python3-tk protobuf-compiler libgl1-mesa-glx nano pkg-config && \
+apt-get install -y -f --no-install-recommends systemd && \
+apt-get install -y -f xdg-utils libxss1 gcc g++ && \
 
 cd /tmp && \
 wget https://developer.download.nvidia.com/compute/cuda/11.3.1/local_installers/cuda_11.3.1_465.19.01_linux.run && \
@@ -38,10 +40,10 @@ source ~/.bashrc  && \
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb && \
 dpkg -i cuda-keyring_1.0-1_all.deb && \
 apt-key del 7fa2af80 && \
-apt clean -y && apt-get update && \
-apt-get install -y libcudnn8=8.2.1.32-1+cuda11.3 && \
-apt-get install -y libcudnn8-dev=8.2.1.32-1+cuda11.3 && \
-apt-get install -y python3-opencv libopencv-dev && \
+apt-get clean -y && apt-get update && \
+apt-get install -y -f libcudnn8=8.2.1.32-1+cuda11.3 && \
+apt-get install -y -f libcudnn8-dev=8.2.1.32-1+cuda11.3 && \
+apt-get install -y -f libopencv-dev python3-opencv && \
 ldconfig  && \
 rm -rf /tmp/*
 
